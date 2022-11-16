@@ -863,7 +863,7 @@ function connected(socket){
     roomNo = Math.round(clientNo / 2);
     socket.join(roomNo);
     console.log(`New client no.: ${clientNo}, room no.: ${roomNo}`);
-    if (clientNo % 4 === 3){
+    if (clientNo % 2 === 1){
         //creating player 1
         serverBalls[socket.id] = new Capsule(80, 270, 150, 270, 25, 10);
         serverBalls[socket.id].maxSpeed = 4;
@@ -873,35 +873,14 @@ function connected(socket){
         serverBalls[socket.id].no = 1;
         serverBalls[socket.id].layer = roomNo;
         playerReg[socket.id] = {id: socket.id, x: 115, y: 270, roomNo: roomNo, no: 1};
-    }
-    else if(clientNo % 4 === 2 ) {
-        serverBalls[socket.id] = new Capsule(80, 270, 150, 270, 25, 10);
-        serverBalls[socket.id].maxSpeed = 4;
-        serverBalls[socket.id].angFriction = 0.01;
-        serverBalls[socket.id].angKeyForce = 0.08;
-        serverBalls[socket.id].score = 0;
-        serverBalls[socket.id].no = 2;
-        serverBalls[socket.id].layer = roomNo;
-        playerReg[socket.id] = {id: socket.id, x: 115, y: 270, roomNo: roomNo, no: 1};
-    }
-    else if(clientNo %4 === 1){
-        serverBalls[socket.id] = new Capsule(80, 270, 150, 270, 25, 10);
-        serverBalls[socket.id].maxSpeed = 4;
-        serverBalls[socket.id].angFriction = 0.01;
-        serverBalls[socket.id].angKeyForce = 0.08;
-        serverBalls[socket.id].score = 0;
-        serverBalls[socket.id].no = 3;
-        serverBalls[socket.id].layer = roomNo;
-        playerReg[socket.id] = {id: socket.id, x: 115, y: 270, roomNo: roomNo, no: 1};
-    }
-    else if (clientNo % 4 === 0){
+    else if (clientNo % 2 === 0){
         //creating player 2
         serverBalls[socket.id] = new Capsule(560, 270, 490, 270, 25, 10);
         serverBalls[socket.id].maxSpeed = 4;
         serverBalls[socket.id].angFriction = 0.01;
         serverBalls[socket.id].angKeyForce = 0.08;
         serverBalls[socket.id].score = 0;
-        serverBalls[socket.id].no = 4;
+        serverBalls[socket.id].no = 2;
         serverBalls[socket.id].layer = roomNo;
         playerReg[socket.id] = {id: socket.id, x: 525, y: 270, roomNo: roomNo, no: 2};
         football[roomNo] = new Ball(320, 270, 20, 6);
